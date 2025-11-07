@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jumpscare</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    height: 100%;
+    overflow: hidden;
+}
+img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+</style>
+</head>
+<body>
+
+<img id="scareImg" src="jumpscare.gif">
+<audio id="scream" src="scream.mp3"></audio>
+
+<script>
+// This runs when the user clicks the link to open the page
+document.body.addEventListener("click", function playSound() {
+    const audio = document.getElementById("scream");
+    audio.play();
+    
+    // Go fullscreen
+    if (document.body.requestFullscreen) {
+        document.body.requestFullscreen().catch(()=>{});
+    }
+
+    // Remove this listener so it only triggers once
+    document.body.removeEventListener("click", playSound);
+});
+</script>
+
+</body>
+</html>
